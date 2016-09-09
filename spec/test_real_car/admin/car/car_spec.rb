@@ -109,6 +109,3 @@ Seats five'
     expect(page).to have_no_content ('NEW Range Rover Sport')
   end
 end
-
-
-# dfgfgdfg
