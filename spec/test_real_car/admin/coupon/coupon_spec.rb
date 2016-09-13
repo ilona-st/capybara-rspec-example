@@ -1,16 +1,11 @@
 describe 'Coupons', type: :feature do
   before  do
     page.driver.browser.manage.window.maximize
-    visit('http://admin.staging.realcar.nyc/')
-    sleep 2
   end
 
    it 'create coupon' do
-
-  # page.find_field('email').set('admin@realcar.com')
-  # page.find_field('password').set('123123123')
-  # click_button('Login')
-
+    #  login
+     visit('https://admin.staging.realcar.nyc/')
       click_link('Coupons')
       click_button('New Coupon')
       fill_in 'couponCode' , with: 'Joker'

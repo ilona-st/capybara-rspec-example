@@ -91,7 +91,7 @@ describe 'Confirm reservation', type: :feature do
        services[4].click
        services[5].click
        click_button 'Book Now'
-       sleep 2
+       sleep 3
 
        fill_in 'firstName', with: 'Killa'
        fill_in 'lastName', with: 'Willa'

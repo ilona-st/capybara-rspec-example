@@ -41,7 +41,7 @@ May I have car Delivered / Pick-up?
 You may choose to pick up / return your vehicle directly to your home, office, hotel, airport, or other location at no additional cost. Please note: All pickup & delivery arrangements must be confirmed at least 24 hours in advance in order to guarantee on-time service. Any changes to pickup or delivery times/locations with less than 24 hours notice may incur an additional transportation fee.
 
 What times can i get car delivered?
-Our normal delivery hours are between 8am and 9pm. Any deliveries outside of those hours must be pre-arranged with us. We’ll do our best to work around your schedule.
+Our normal delivery hours are between 9am and 9pm. Any deliveries outside of those hours must be pre-arranged with us. We’ll do our best to work around your schedule.
 
 Can I extend my reservation?
 Yes, you may, unless another renter has already booked the vehicle. If a trip is not extended and the vehicle is kept beyond the scheduled trip end time, you will be subject to significant late fees.
@@ -121,7 +121,7 @@ Excess Mileage Fee
 $0.75 per excess mile driven
 
 Late Return Fee
-$50/hour, up to $200 or 3x the daily rate (whichever is greater)
+50$/30 mins, started in 30 mins of your late
 
 Gas Fee
 Cost to replace gas not refilled

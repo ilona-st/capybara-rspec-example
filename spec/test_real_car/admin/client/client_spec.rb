@@ -1,22 +1,35 @@
 describe 'Clients', type: :feature do
-  before  do
-    page.driver.browser.manage.window.maximize
+    before  do
+      page.driver.browser.manage.window.maximize
+    end
+
+  context 'Create/Edit/Delete' do
+    it 'create and delete new client with only required fields' do
+      # login
+      # sleep 1
+     visit('http://admin.staging.realcar.nyc/')
+     find('#side-menu').first(:link, "Clients").click
+     click_button 'New Client'
+
+     fill_in 'First name', with: 'Leo'
+     fill_in 'Last name', with: 'Vinci'
+     fill_in 'Phone', with: '+355432982'
+     fill_in 'Email', with: 'leo1452@gmaatrail.com'
+
+     click_button 'Create'
+     sleep 2
+     expect(page).to have_text("Full Name: Leo Vinci UNVERIFIED Email: leo1452@gmaatrail.com Phone: +355432982 Group: Regular Clients")
+     page.find('div[client="client"]').click
+     sleep 1
+     click_button 'Delete'
+     sleep 1
+     click_button 'Yes, delete it!'
+     click_button 'OK'
+     expect(page).to have_no_text("Full Name: Leo Vinci UNVERIFIED Email: leo1452@gmaatrail.com Phone: +355432982 Group: Regular Clients")
+   end
+
+   it 'create new client with all fields' do
     visit('http://admin.staging.realcar.nyc/')
-    # page.find_field('email').set('admin@realcar.com')
-    # page.find_field('password').set('123123123')
-    # click_button('Login')
-    sleep 1
-
-  end
-
-   it 'create new client' do
-
-    #  visit('http://admin.staging.realcar.nyc/')
-    #  page.find_field('email').set('admin@realcar.com')
-    #  page.find_field('password').set('123123123')
-    #  click_button('Login')
-
-
     find('#side-menu').first(:link, "Clients").click
     click_button 'New Client'
 
@@ -43,19 +56,14 @@ describe 'Clients', type: :feature do
     click_button 'Create'
     sleep 2
     expect(page).to have_text("Full Name: Leonardo da Vinci UNVERIFIED Email: leo1452@gmaaail.com Phone: +35543298231 Group: Regular Clients Notes: Leonardo di ser Piero da Vinci, more commonly Leonardo da Vinci or simply Leonardo.. Country: Republic of Florence State: Italy City: Florence Home address: the lower valley of the Arno river Zip: 42323432 Employer: King Employer's title: Great How long? all day long Employer's supervisor: Madam Employer's address: Venice Employer's phone: +1645564556 Emergency contact: +654434234423 Emergency address: the territory of the Medici-ruled Republic of Florence Emergency phone: +4654654564")
-
   end
 
   it 'edit client' do
-
     visit('http://admin.staging.realcar.nyc/clients/list')
     sleep 3
-
     click_link('Mr. Leonardo da Vinci')
     sleep 2
-
     page.find('div[client="client"]').click
-
     fill_in 'First name', with: 'NewLeo'
     fill_in 'Last name', with: 'NewVinci'
     fill_in 'Phone', with: '+9935543298231'
@@ -100,5 +108,21 @@ describe 'Clients', type: :feature do
     Employer: Qween Employer's title: GreatM How long? all night long
     Employer's supervisor: Prince Employer's address: NewVenice Employer's phone: +16488886
     Emergency contact: +6544349999423 Emergency address: the territory `new Florence Emergency phone: +4650978564")
+  end
+end
+
+context 'Validation' do
+    it "with all empty fields" do
+      visit('http://admin.staging.realcar.nyc/clients/list')
+      sleep 2
+      click_button("New Client")
+      click_button("Create")
+      click_button("Create")
+      sleep 2
+      expect(page).to have_content("First Name is required.")
+      expect(page).to have_content("Last Name is required.")
+      expect(page).to have_content("Phone is required.")
+      expect(page).to have_content("Email is required.")
+    end
   end
 end
