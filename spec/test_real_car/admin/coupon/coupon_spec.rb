@@ -3,8 +3,8 @@ describe 'Coupons', type: :feature do
     page.driver.browser.manage.window.maximize
   end
 
+context 'Create/Edit/Delete' do
    it 'create coupon' do
-
      visit('https://admin.staging.realcar.nyc/')
       click_link('Coupons')
       click_button('New Coupon')
@@ -64,3 +64,26 @@ describe 'Coupons', type: :feature do
       expect(page).to have_no_content ('NewJ')
     end
   end
+
+  context 'Validation' do
+    it "with all empty fields" do
+      visit('https://admin.staging.realcar.nyc/')
+      click_link('Coupons')
+      click_button('New Coupon')
+
+      page.find('select[name="couponType"]').click
+      page.find('select[name="couponType"]').click
+
+      fill_in 'couponCode' , with: ''
+      fill_in 'couponLimit' , with: ''
+      fill_in 'couponAmount' , with: ''
+      fill_in 'couponDescription' , with: 'lol'
+
+      expect(page).to have_text("Coupon code is required.")
+      expect(page).to have_text("Coupon limit is required.")
+      expect(page).to have_text("Coupon type is required.")
+      expect(page).to have_text("Coupon amount is required.")
+      expect(page).to have_button('Save', disabled: true)
+    end
+  end
+end

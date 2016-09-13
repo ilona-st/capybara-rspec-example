@@ -32,9 +32,8 @@ describe 'Already have an account? SIGN IN TO YOUR ACCOUNT', type: :feature do
     #  fill_in "pass", with: "1234567890"
 
      checkbox
+     
      sleep 5
-
-
 
     expect(page).to have_button('Book now', disabled: true)
 

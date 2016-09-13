@@ -99,12 +99,7 @@ Seats five'
     click_link('NEW Range Rover Sport')
     expect(page).to have_content ("Name: NEW Range Rover Sport NEW Range Rover NEW Sport Exterior Silver Interior Silver 2015 NYC NEW Status VIN: 07564665403 EZ PASS: SGKLL892D NEW Range Rover Sport Color: Exterior Silver Interior Black 4-wheel-drive Premium leather interior Heated seats and steering wheel Harman/Kardon premium sound system Voice-activated navigation system Bluetooth wireless data link Auxiliary cable & iPhone charger included Seats five")
     page.find('div[car-form="carId"]').click
-    click_button('Delete')
-    sleep 2
-
-    click_button('Yes, delete it!')
-    sleep 1
-    click_button('OK')
+    click_delete
     click_link('Cars')
     expect(page).to have_no_content ('NEW Range Rover Sport')
   end

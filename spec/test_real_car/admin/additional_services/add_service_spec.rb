@@ -33,11 +33,7 @@ context 'Create/Edit/Delete' do
   it 'edit service' do
     visit('http://admin.staging.realcar.nyc/services/list')
     click_link("New awesome service")
-    edit = page.find('h3.panel-title')
-    edit.find('.glyphicon.glyphicon-edit.pull-right.pointer').click
-    page.find('.glyphicon.glyphicon-remove').click
-    edit = page.find('h3.panel-title')
-    edit.find('.glyphicon.glyphicon-edit.pull-right.pointer').click
+    click_edit
     expect(page).to have_text("Title: New awesome service Short name: short awesome name Price: $100.00 Position: 1 Insurance: + CDW: + CDW coverage: 665 GTW: + Edit Addition Service Cancel Edit Addition Service (Esc) Title Price $ Short Name Position Is Insurance Is GTW Is CDW CDW coverage Delete Save")
     fill_in 'serviceTitle', with: 'Awesome service'
     fill_in 'servicePrice', with: '777'
@@ -58,17 +54,9 @@ context 'Create/Edit/Delete' do
   it 'delete service' do
     visit('http://admin.staging.realcar.nyc/services/list')
     click_link("Awesome service")
-    edit = page.find('h3.panel-title')
-    edit.find('.glyphicon.glyphicon-edit.pull-right.pointer').click
-    page.find('.glyphicon.glyphicon-remove').click
-    edit = page.find('h3.panel-title')
-    edit.find('.glyphicon.glyphicon-edit.pull-right.pointer').click
+    click_edit
     expect(page).to have_text("Title: Awesome service Short name: aw_name Price: $777.00 Position: -1 Insurance: - CDW: + CDW coverage: 665 GTW: -")
-    click_button('Delete')
-    sleep 2
-    click_button('Yes, delete it!')
-    sleep 1
-    click_button('OK')
+    click_delete
     expect(page).to have_no_text("Awesome service")
  end
 end

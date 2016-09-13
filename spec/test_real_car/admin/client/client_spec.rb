@@ -5,9 +5,10 @@ describe 'Clients', type: :feature do
 
   context 'Create/Edit/Delete' do
     it 'create and delete new client with only required fields' do
-      # login
-      # sleep 1
+
      visit('http://admin.staging.realcar.nyc/')
+    #  login
+     sleep 1
      find('#side-menu').first(:link, "Clients").click
      click_button 'New Client'
 
@@ -21,10 +22,7 @@ describe 'Clients', type: :feature do
      expect(page).to have_text("Full Name: Leo Vinci UNVERIFIED Email: leo1452@gmaatrail.com Phone: +355432982 Group: Regular Clients")
      page.find('div[client="client"]').click
      sleep 1
-     click_button 'Delete'
-     sleep 1
-     click_button 'Yes, delete it!'
-     click_button 'OK'
+     click_delete
      expect(page).to have_no_text("Full Name: Leo Vinci UNVERIFIED Email: leo1452@gmaatrail.com Phone: +355432982 Group: Regular Clients")
    end
 
@@ -113,7 +111,10 @@ context 'Validation' do
       visit('http://admin.staging.realcar.nyc/clients/list')
       sleep 2
       click_button("New Client")
-      click_button("Create")
+
+      fill_in "Emergency Phone", with: '+4650978564'
+      fill_in "Emergency Phone", with: ''
+
       click_button("Create")
       sleep 2
       expect(page).to have_content("First Name is required.")
