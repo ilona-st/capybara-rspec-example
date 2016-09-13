@@ -6,10 +6,3 @@ module AuthenticationMacros
     click_button('Login')
   end
 end
-
-
-# module MainMenuLinks
-#   def visit_additional_services_page
-#     visit('https://admin.staging.realcar.nyc/services/list')
-#   end
-# end

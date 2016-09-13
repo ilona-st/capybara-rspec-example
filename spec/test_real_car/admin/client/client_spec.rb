@@ -97,10 +97,7 @@ describe 'Clients', type: :feature do
     sleep 2
     page.find('div[client="client"]').click
     sleep 1
-    click_button 'Delete'
-    sleep 1
-    click_button 'Yes, delete it!'
-    click_button 'OK'
+    click_delete
     expect(page).to have_no_text("Full Name: NewLeo NewVinci UNVERIFIED Email: leo1452999@gmaaaaail.com Phone: +9935543298231 Group: Regular Clients Notes:
     NEW Leonardo di ser Piero da Vinci, more commonly Leonardo da Vinci or simply Leonardo..
     Country: New Republic of Florence State: France City: Madrid

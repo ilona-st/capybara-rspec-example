@@ -4,7 +4,7 @@ describe 'Coupons', type: :feature do
   end
 
    it 'create coupon' do
-    #  login
+
      visit('https://admin.staging.realcar.nyc/')
       click_link('Coupons')
       click_button('New Coupon')
@@ -27,6 +27,8 @@ describe 'Coupons', type: :feature do
 
       expect(page).to have_text("Code: Joker Description: Batman Enemy Valid From: 2016-08-26
       Valid Until: 2017-08-26 Limit: 5 Type: amount Amount: $100.00")
+
+      sleep 3
   end
 
   it 'edit coupon' do
@@ -35,11 +37,7 @@ describe 'Coupons', type: :feature do
       row = code.find(:xpath, "../..")
       row.first('a').click
 
-      edit = page.find('h3.panel-title')
-      edit.find('.glyphicon.glyphicon-edit.pull-right.pointer').click
-      page.find('.glyphicon.glyphicon-remove').click
-      edit = page.find('h3.panel-title')
-      edit.find('.glyphicon.glyphicon-edit.pull-right.pointer').click
+      click_edit
 
       fill_in 'couponCode' , with: 'NewJ'
       fill_in 'couponDescription' , with: 'New Batman Enemy'
@@ -59,17 +57,9 @@ describe 'Coupons', type: :feature do
       row = code.find(:xpath, "../..")
       row.first('a').click
 
-      edit = page.find('h3.panel-title')
-      edit.find('.glyphicon.glyphicon-edit.pull-right.pointer').click
-      page.find('.glyphicon.glyphicon-remove').click
-      edit = page.find('h3.panel-title')
-      edit.find('.glyphicon.glyphicon-edit.pull-right.pointer').click
+      click_edit
+      click_delete
 
-      click_button('Delete')
-      sleep 2
-      click_button('Yes, delete it!')
-      sleep 1
-      click_button('OK')
       click_link('Coupons')
       expect(page).to have_no_content ('NewJ')
     end
