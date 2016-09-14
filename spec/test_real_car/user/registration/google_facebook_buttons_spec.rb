@@ -23,6 +23,8 @@ describe 'Google Authorization', type: :feature do
       click_button('signIn')
 
       # expect(page).to have_text ('Want to book another car? BOOK IT NOW')
+      # expect(page).to have_text ('Want to book another car? BOOK IT NOW')
+      # expect(page).to have_text ('Want to book another car? BOOK IT NOW')
 
 
      end
