@@ -31,4 +31,8 @@ RSpec.configure do |config|
   config.include WaitForAjax, type: :feature
   config.include AuthenticationMacros, type: :feature
   config.include EditdeleteMacros, type: :feature
+
+  config.before do
+    page.driver.browser.manage.window.maximize
+  end
 end
